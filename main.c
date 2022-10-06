@@ -30,7 +30,7 @@ void	check_arguments(int argc, char **argv)
 			print_error_and_exit("Error!\nwrong file\n");
 		i++;
 	}
-	if (ft_strncmp(argv[1] + i, ".fdf\0", 5) != 0)
+	if (ft_strncmp(argv[1] + i, ".cub\0", 5) != 0)
 		print_error_and_exit("Error!\nwrong name\n");
 }
 
