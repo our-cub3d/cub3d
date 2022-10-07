@@ -7,13 +7,12 @@ void	check_arguments(int argc, char **argv)
 
 	if (argc != 2)
 		print_error_and_exit("wrong arguments\n");
-	i = 0;
-	//확장자 이름 확인
+	i = ft_strlen(argv[1]) - 1;
 	while (argv[1][i] != '.')
 	{
-		if (argv[1][i] == '\0')
+		if (i == 0)
 			print_error_and_exit("wrong file\n");
-		i++;
+		--i;
 	}
 	if (ft_strncmp(argv[1] + i, ".cub\0", 5) != 0)
 		print_error_and_exit("wrong name\n");

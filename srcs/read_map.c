@@ -4,17 +4,17 @@
 
 void	compare_and_save(char **splited, t_cube_info *cube_info)
 {
-	if (ft_strncmp(splited[0], "NO", 3))
+	if (!ft_strncmp(splited[0], "NO", 3))
 		cube_info->NO = splited[1];
-	else if (ft_strncmp(splited[0], "SO", 3))
+	else if (!ft_strncmp(splited[0], "SO", 3))
 		cube_info->SO = splited[1];
-	else if (ft_strncmp(splited[0], "WE", 3))
+	else if (!ft_strncmp(splited[0], "WE", 3))
 		cube_info->WE = splited[1];
-	else if (ft_strncmp(splited[0], "EA", 3))
+	else if (!ft_strncmp(splited[0], "EA", 3))
 		cube_info->EA = splited[1];
-	else if (ft_strncmp(splited[0], "F", 2))
+	else if (!ft_strncmp(splited[0], "F", 2))
 		cube_info->F = splited[1];	
-	else if (ft_strncmp(splited[0], "C", 2))
+	else if (!ft_strncmp(splited[0], "C", 2))
 		cube_info->C = splited[1];
 	else
 	{
