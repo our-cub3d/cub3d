@@ -28,7 +28,6 @@ struct	s_parsing_info
 	int			width;
 	int			height;
 	char		**map;
-	t_player	*player;
 };
 
 struct	s_game
