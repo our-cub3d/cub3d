@@ -2,7 +2,27 @@
 #include "../libft/libft.h"
 #include <fcntl.h>
 
-void	compare_and_save(char **splited, t_cube_info *cube_info)
+int	count_null_in_cube_info(t_cube_info *cube_info)
+{
+	int	count;
+
+	count = 0;
+	if (cube_info->NO)
+		++count;
+	if (cube_info->SO)
+		++count;
+	if (cube_info->WE)
+		++count;
+	if (cube_info->EA)
+		++count;
+	if (cube_info->F)
+		++count;
+	if (cube_info->C)
+		++count;
+	return (count);
+}
+
+int	compare_and_save(char **splited, t_cube_info *cube_info)
 {
 	if (!ft_strncmp(splited[0], "NO", 3))
 		cube_info->NO = splited[1];
@@ -18,11 +38,11 @@ void	compare_and_save(char **splited, t_cube_info *cube_info)
 		cube_info->C = splited[1];
 	else
 	{
-		print_error_and_exit("wrong information\n");
-		//return (0);
+		// print_error_and_exit("wrong information\n");
+		return (0);
 	}
 	free(splited[0]);
-	//return (1);
+	return (1);
 }
 
 void	read_wall_texture(char *line, t_game *game)
