@@ -1,5 +1,6 @@
-#include "cub3d.h"
+#include "../include/cub3d.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 void	put_string_fd(char *str, int fd)
 {

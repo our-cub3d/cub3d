@@ -17,8 +17,12 @@ void	compare_and_save(char **splited, t_cube_info *cube_info)
 	else if (ft_strncmp(splited[0], "C", 2))
 		cube_info->C = splited[1];
 	else
+	{
 		print_error_and_exit("wrong information\n");
+		//return (0);
+	}
 	free(splited[0]);
+	//return (1);
 }
 
 void	read_wall_texture(char *line, t_game *game)
@@ -45,9 +49,10 @@ void	read_map(char *name_of_map, t_game *game)
 	while (line)
 	{
 		read_wall_texture(line, game);
+		//if (read_wall_texture(line, game));
 		free(line);
 		line = get_next_line(fd);
 	}
-	fd = open(name_of_map, O_RDONLY);// malloc 해서 파싱
-	
+	//fd = open(name_of_map, O_RDONLY);// malloc 해서 파싱
+
 }

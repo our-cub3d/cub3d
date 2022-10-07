@@ -1,4 +1,5 @@
 #include "../include/cub3d.h"
+#include "../libft/libft.h"
 
 void	check_arguments(int argc, char **argv)
 {
