@@ -13,6 +13,7 @@ void	put_string_fd(char *str, int fd)
 
 void	print_error_and_exit(char *str)
 {
+	put_string_fd("Error\n", 2);
 	put_string_fd(str, 2);
 	exit(1);
 }
