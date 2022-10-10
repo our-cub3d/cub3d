@@ -76,7 +76,9 @@ int	is_map(char	*line)
 	len = 0;
 	while (line[len])
 	{
-		if (line[len] != '0' && line[len] != '1' && !is_space(line[len]))
+		if (line[len] != '0' && line[len] != '1' && !is_space(line[len]) \
+			&& line[len] != 'N' && line[len] != 'S' && line[len] != 'E' \
+			&& line[len] != 'W')
 			return (0);
 		++len;
 	}
@@ -98,11 +100,48 @@ int	is_end_line(char *line)
 	return (i);
 }
 
+char	*get_fornt_splited(char *line, char *set)
+{
+	char **splited;
+
+	splited = ft_split(line, set);
+	free(splited[1]);
+	return (splited[0]);
+}
+
+void	check_middle_line(char *splited, char *temp, t_parsing_info *passing_info)
+{
+	int	i;
+
+	i = 0;
+	while (splited[i])
+	{
+		if (!is_map(splited))
+				print_error_and_exit("wrong information0-1\n");
+		if (i > (int)ft_strlen(temp) && !is_space(splited[i]) && \
+			splited[i] != '1') //현재 이전 줄보다 긴줄. 근데 끝에 1이나 스페이스가 아닌게 들어가 있음
+				print_error_and_exit("wrong information1\n");
+		if (is_space(splited[i])) //현재 줄에 스페이스가 나왔는데,
+		{
+			if ((!is_space(temp[i]) && temp[i] != '1')) //이전 줄이 스페이스나 1이 아님
+				print_error_and_exit("wrong information2\n");
+			if (i > 0 && (!is_space(splited[i - 1]) && splited[i - 1] != '1'))//현재 줄의 왼쪽이 스페이스나 1이 아님
+				print_error_and_exit("wrong information3\n");
+			if (i < (int)ft_strlen(splited) && \
+				(splited[i + 1] && ((!is_space(splited[i + 1])) && splited[i + 1] != '1')))//현재 줄의 오른쪽이 스페이스나 1이 아님
+				print_error_and_exit("wrong information4\n");
+		}
+		++i;
+	}
+	if (i > passing_info->width)
+		passing_info->width = i;
+	++(passing_info->height);
+}
+
 void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 {
 	char	*temp;
 	char	*splited;
-	int		i;
 
 	if (!line)
 		print_error_and_exit("wrong information0\n"); //Wall texture 정보만 6개 들어오고 맵 정보가 안들어온 경우
@@ -110,32 +149,11 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 	++(passing_info->height);
 	temp = line;
 	line = get_next_line(fd);
-	splited = *ft_split(line, "\n");
+	splited = get_fornt_splited(line, "\n");
 	free(line);
 	while (splited)
 	{
-		i = 0;
-		printf("|%s|\n", splited);
-		while (splited[i])
-		{
-			if (i > (int)ft_strlen(temp) && !is_space(splited[i]) && \
-				splited[i] != '1') //현재 이전 줄보다 긴줄. 근데 끝에 1이나 스페이스가 아닌게 들어가 있음
-					print_error_and_exit("wrong information1\n");
-			if (is_space(splited[i])) //현재 줄에 스페이스가 나왔는데,
-			{
-				if ((!is_space(temp[i]) && temp[i] != '1')) //이전 줄이 스페이스나 1이 아님
-					print_error_and_exit("wrong information2\n");
-				if (i > 0 && (!is_space(splited[i - 1]) && splited[i - 1] != '1'))//현재 줄의 왼쪽이 스페이스나 1이 아님
-					print_error_and_exit("wrong information3\n");
-				if (i < (int)ft_strlen(splited) && \
-					(splited[i + 1] && ((!is_space(splited[i + 1])) && splited[i + 1] != '1')))//현재 줄의 오른쪽이 스페이스나 1이 아님
-					print_error_and_exit("wrong information4\n");
-			}
-			++i;
-		}
-		if (i > passing_info->width)
-			passing_info->width = i;
-		++(passing_info->height);
+		check_middle_line(splited, temp, passing_info);
 		free(temp);
 		temp = splited;
 		splited = NULL;
@@ -145,7 +163,7 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 			is_end_line(temp);
 			break ;
 		}
-		splited = *ft_split(line, "\n");
+		splited = get_fornt_splited(line, "\n");
 		free(line);
 	}
 }
@@ -172,5 +190,5 @@ void	read_map(char *name_of_map, t_game *game)
 	print_cube_info(game->cube_info);
 	// printf("!!!!!!\n");
 	check_valid_map(line, game->parsing_info, fd); //맵의 유효성 검사. 양 끝단, 스페이스 전 좌우 비교
-	//fd = open(name_of_map, O_RDONLY);// malloc 해서 파싱
+	//fd = open(name_of_map, O_RDONLY);// malloc 해서 파싱-> 플레이어가 2개 이상인 경우 검사.
 }
