@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 
-static int	count_in_cube_info(t_cube_info *cube_info)
+int	count_in_cube_info(t_cube_info *cube_info)
 {
 	int	count;
 
@@ -50,10 +50,12 @@ void	read_map(char *name_of_map, t_game *game)
 			else
 				break ;
 		}
+		else if (read_wall_texture(line, game) == -2)
+			print_error_and_exit("wrong information\n");
 		free(line);
 		line = get_next_line(fd);
 	}
-	print_cube_info(game->cube_info);
+	// print_cube_info(game->cube_info);
 	check_valid_map(line, game->parsing_info, fd); //맵의 유효성 검사. 양 끝단, 스페이스 전 좌우 비교
 	close(fd);
 	fd = open(name_of_map, O_RDONLY);

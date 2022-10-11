@@ -1,6 +1,7 @@
 #include "../include/cub3d.h"
 #include "../libft/libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static void	update_value(char **info, char *value)
 {
@@ -39,10 +40,17 @@ int	read_wall_texture(char *line, t_game *game)
 	char		**splited;
 	int			result;
 
+	// printf("count : %d\n", ft_word_count(line, spaces));
+	// printf("line : |%s|\n", line);
 	if (ft_word_count(line, spaces) == 0)
 		return (-1);
 	if (ft_word_count(line, spaces) != 2)
-		return (0);
+		{
+			if (count_in_cube_info(game->cube_info) != 6)
+				return (-2);
+			else
+				return (0);
+		}
 	splited = ft_split(line, spaces);
 	result = compare_and_save(splited, game->cube_info);
 	free(splited);

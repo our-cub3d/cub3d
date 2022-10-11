@@ -28,7 +28,7 @@ void	fill_element(t_game *game, char input, int x, int y)
 		game->parsing_info->map[y][x] = E_ROAD;
 	else if (input == 'N' || input == 'W' || input == 'S' || input == 'E')
 	{
-		printf("x : %d\n", game->player->x);
+		// printf("x : %d\n", game->player->x);
 		if (game->player->x)
 			print_error_and_exit("too many players!\n");
 		if (input == 'N')
@@ -84,4 +84,6 @@ void	get_map_array(t_game *game, int fd)
 		line = get_next_line(fd);
 	}
 	fill_map_array(game, fd, line);
+	if (game->player->x == 0)
+		print_error_and_exit("there's no player!\n");
 }

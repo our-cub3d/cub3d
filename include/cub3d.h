@@ -31,6 +31,7 @@ int		is_end_line(char *line);
 int		compare_and_save(char **splited, t_cube_info *cube_info);
 int		read_wall_texture(char *line, t_game *game);
 void	read_map(char *name_of_map, t_game *game);
+int		count_in_cube_info(t_cube_info *cube_info);
 char	*get_front_splited(char *line, char *set);
 
 /*  read_wall_texture.c  */
@@ -39,6 +40,5 @@ int		read_wall_texture(char *line, t_game *game);
 /*  test_print.c  */
 void	print_map(t_game *game);
 void	print_cube_info(t_cube_info *cube);
-
 
 #endif
