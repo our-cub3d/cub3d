@@ -1,10 +1,22 @@
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
+#define	NULL 0
 typedef	struct s_cube_info		t_cube_info;
 typedef struct s_player			t_player;
 typedef struct s_parsing_info	t_parsing_info;
 typedef struct s_game			t_game;
+
+typedef enum e_element			t_element;
+typedef enum e_angle			t_angle;
+
+enum	e_element
+{
+	E_ROAD,
+	E_WALL,
+	E_PLAYER,
+	E_VOID
+};
 
 struct	s_cube_info
 {
