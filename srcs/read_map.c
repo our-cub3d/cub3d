@@ -3,7 +3,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int	count_null_in_cube_info(t_cube_info *cube_info)
+int	count_in_cube_info(t_cube_info *cube_info)
 {
 	int	count;
 
@@ -23,22 +23,31 @@ int	count_null_in_cube_info(t_cube_info *cube_info)
 	return (count);
 }
 
+void	update_value(char **info, char *value)
+{
+	if (*info)
+		free(*info);
+	*info = value;
+}
+
 int	compare_and_save(char **splited, t_cube_info *cube_info)
 {
 	if (!ft_strncmp(splited[0], "NO", 3))
-		cube_info->NO = splited[1];
+		update_value(&cube_info->NO, splited[1]);
 	else if (!ft_strncmp(splited[0], "SO", 3))
-		cube_info->SO = splited[1];
+		update_value(&cube_info->SO, splited[1]);
 	else if (!ft_strncmp(splited[0], "WE", 3))
-		cube_info->WE = splited[1];
+		update_value(&cube_info->WE, splited[1]);
 	else if (!ft_strncmp(splited[0], "EA", 3))
-		cube_info->EA = splited[1];
+		update_value(&cube_info->EA, splited[1]);
 	else if (!ft_strncmp(splited[0], "F", 2))
-		cube_info->F = splited[1];	
+		update_value(&cube_info->F, splited[1]);
 	else if (!ft_strncmp(splited[0], "C", 2))
-		cube_info->C = splited[1];
+		update_value(&cube_info->C, splited[1]);
 	else
 	{
+		free(splited[0]);
+		free(splited[1]);
 		return (0);
 	}
 	free(splited[0]);
@@ -92,7 +101,6 @@ int	is_end_line(char *line)
 	i = 0;
 	while(line[i])
 	{
-		// printf("i : %d, char : |%c|\n", i, line[i]);
 		if (line[i] != '1' && !is_space(line[i]))
 			print_error_and_exit("wrong information6\n"); //첫줄에 1이나 spaces가 아닌 문자
 		++i;
@@ -106,6 +114,7 @@ char	*get_fornt_splited(char *line, char *set)
 
 	splited = ft_split(line, set);
 	free(splited[1]);
+	free(splited);
 	return (splited[0]);
 }
 
@@ -118,7 +127,7 @@ void	check_middle_line(char *splited, char *temp, t_parsing_info *passing_info)
 	{
 		if (!is_map(splited))
 				print_error_and_exit("wrong information0-1\n");
-		if (i > (int)ft_strlen(temp) && !is_space(splited[i]) && \
+		if (i >= (int)ft_strlen(temp) && !is_space(splited[i]) && \
 			splited[i] != '1') //현재 이전 줄보다 긴줄. 근데 끝에 1이나 스페이스가 아닌게 들어가 있음
 				print_error_and_exit("wrong information1\n");
 		if (is_space(splited[i])) //현재 줄에 스페이스가 나왔는데,
@@ -161,6 +170,7 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 		if (!line)
 		{
 			is_end_line(temp);
+			free(temp);
 			break ;
 		}
 		splited = get_fornt_splited(line, "\n");
@@ -179,7 +189,7 @@ void	read_map(char *name_of_map, t_game *game)
 	{
 		if (read_wall_texture(line, game) == 0)
 		{
-			if (!is_map(line) || count_null_in_cube_info(game->cube_info) != 6)
+			if (!is_map(line) || count_in_cube_info(game->cube_info) != 6)
 				print_error_and_exit("wrong information\n");
 			else
 				break ;
@@ -188,7 +198,6 @@ void	read_map(char *name_of_map, t_game *game)
 		line = get_next_line(fd);
 	}
 	print_cube_info(game->cube_info);
-	// printf("!!!!!!\n");
 	check_valid_map(line, game->parsing_info, fd); //맵의 유효성 검사. 양 끝단, 스페이스 전 좌우 비교
-	//fd = open(name_of_map, O_RDONLY);// malloc 해서 파싱-> 플레이어가 2개 이상인 경우 검사.
+	//fd = open(name_of_map, O_RDONLY);// malloc 해서 파싱-> 플레이어가 2개 이상인 경우 검사. 플레이어가 없거나
 }
