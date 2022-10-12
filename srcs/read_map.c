@@ -17,9 +17,9 @@ int	count_in_cube_info(t_cube_info *cube_info)
 		++count;
 	if (cube_info->EA)
 		++count;
-	if (cube_info->F)
+	if (cube_info->F != -1)
 		++count;
-	if (cube_info->C)
+	if (cube_info->C != -1)
 		++count;
 	return (count);
 }
@@ -36,7 +36,7 @@ void	read_map(char *name_of_map, t_game *game)
 		if (read_wall_texture(line, game) == 0)
 		{
 			if (!is_map(line) || count_in_cube_info(game->cube_info) != 6)
-				print_error_and_exit("wrong information\n");
+				print_error_and_exit("wrong information(read-map)\n");
 			else
 				break ;
 		}

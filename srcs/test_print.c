@@ -22,6 +22,6 @@ void print_cube_info(t_cube_info *cube)
 	printf("SO : %s\n", cube->SO);
 	printf("WE : %s\n", cube->WE);
 	printf("EA : %s\n", cube->EA);
-	printf("F : %s\n", cube->F);
-	printf("C : %s\n", cube->C);
+	printf("F : %lld\n", cube->F);
+	printf("C : %lld\n", cube->C);
 }

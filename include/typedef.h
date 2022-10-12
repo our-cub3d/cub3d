@@ -14,18 +14,18 @@ enum	e_element
 {
 	E_ROAD,
 	E_WALL,
-	E_PLAYER,
 	E_VOID
+	// E_PLAYER,
 };
 
 struct	s_cube_info
 {
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	char	*F;
-	char	*C;
+	char		*NO;
+	char		*SO;
+	char		*WE;
+	char		*EA;
+	long long	F;
+	long long	C;
 };
 
 struct	s_player

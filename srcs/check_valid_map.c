@@ -1,7 +1,7 @@
 #include "../include/cub3d.h"
 #include "../libft/libft.h"
 
-char	*get_front_splited(char *line, char *set)
+char	*remove_newline(char *line, char *set)
 {
 	char **splited;
 
@@ -52,7 +52,7 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 	++(passing_info->height);
 	temp = line;
 	line = get_next_line(fd);
-	splited = get_front_splited(line, "\n");
+	splited = remove_newline(line, "\n");
 	free(line);
 	while (splited)
 	{
@@ -67,7 +67,7 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 			free(temp);
 			break ;
 		}
-		splited = get_front_splited(line, "\n");
+		splited = remove_newline(line, "\n");
 		free(line);
 	}
 }

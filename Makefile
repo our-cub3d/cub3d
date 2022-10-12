@@ -15,6 +15,7 @@ SRC_DIR 			= 	./srcs/
 
 FILES 					=	check_arguments.c \
 	 						check_valid_map.c \
+							get_fc.c \
 							get_map_array.c \
 							init.c \
 							main.c \
