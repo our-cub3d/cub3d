@@ -45,12 +45,7 @@ int	read_wall_texture(char *line, t_game *game)
 	if (ft_word_count(line, spaces) == 0)
 		return (-1);
 	if (ft_word_count(line, spaces) != 2)
-		{
-			if (count_in_cube_info(game->cube_info) != 6)
-				return (-2);
-			else
-				return (0);
-		}
+		return (0);
 	splited = ft_split(line, spaces);
 	result = compare_and_save(splited, game->cube_info);
 	free(splited);

@@ -7,6 +7,7 @@
 void	check_arguments(int argc, char **argv);
 
 /*  check_valid_map.c   */
+char	*get_front_splited(char *line, char *set);
 void	check_valid_map(char *line, t_parsing_info *passing_info, int fd);
 
 /*  init.c  */
@@ -32,7 +33,6 @@ int		compare_and_save(char **splited, t_cube_info *cube_info);
 int		read_wall_texture(char *line, t_game *game);
 void	read_map(char *name_of_map, t_game *game);
 int		count_in_cube_info(t_cube_info *cube_info);
-char	*get_front_splited(char *line, char *set);
 
 /*  read_wall_texture.c  */
 int		read_wall_texture(char *line, t_game *game);

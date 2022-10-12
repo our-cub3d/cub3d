@@ -15,10 +15,10 @@ SRC_DIR 			= 	./srcs/
 
 FILES 					=	check_arguments.c \
 	 						check_valid_map.c \
+							get_map_array.c \
 							init.c \
 							main.c \
 							print.c \
-							read_map_arr.c \
 							read_map_utils.c \
 							read_map.c \
 							read_wall_texture.c \
