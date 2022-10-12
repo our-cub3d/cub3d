@@ -6,7 +6,7 @@
 static void	update_value(char **info, char *value)
 {
 	if (*info)
-		free(*info);
+		print_error_and_exit("wrong information\n");
 	*info = value;
 }
 
