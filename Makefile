@@ -3,8 +3,9 @@ LIBFT				=	./libft/libft.a
 
 CC 					=	cc
 CFLAGS				=	-Wall -Wextra -Werror -g3
-MLX_FLAGS			=	
-# MLX_FLAGS			=	-lmlx -framework OpenGL -framework AppKit
+# MLX_FLAGS			=
+MLX_FLAGS			=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+# 	arch -x86_64 gcc -L mlx -lmlx -framework OpenGL -framework AppKit *.clean
 
 # INCLUDE			:= ./include/
 # INCLUDE_FILE	:= $(addprefix $(INCLUDE), cub3d.h, typedef.h)
@@ -37,7 +38,8 @@ OBJS					=	$(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^
+	make -C ./mlx
+	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $@ $^
 	
 $(LIBFT) :
 	make -C ./libft/
@@ -45,10 +47,12 @@ $(LIBFT) :
 clean:
 	$(RM) $(OBJS) $(BOBJ)
 	make -C libft clean
+	make -C mlx clean
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(MLX_FLAGS)
 	make -C libft fclean
+	make -C mlx clean
 
 re:
 	make fclean
