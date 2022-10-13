@@ -3,7 +3,7 @@
 
 # define	NULL		0
 # define	WIN_W		800
-# define	WIN_H		640
+# define	WIN_H		400
 
 # define	TILE_SIZE	7
 
