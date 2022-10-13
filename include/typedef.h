@@ -5,8 +5,11 @@
 # define	WIN_W		800
 # define	WIN_H		640
 
-# define	TILE_SIZE	32
+# define	TILE_SIZE	7
 
+#define X_EVENT_KEY_PRESS	2
+#define X_EVENT_KEY_EXIT	17
+#define KEY_ESC				53
 
 typedef	struct s_cube_info		t_cube_info;
 typedef struct s_player			t_player;

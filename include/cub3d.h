@@ -12,14 +12,24 @@ char	*remove_newline(char *line, char *set);
 void	check_valid_map(char *line, t_parsing_info *passing_info, int fd);
 
 /*  init.c  */
+void	init_mlx(t_game *game);
 void	init_all(t_game	*game);
+
+/*  mlx_draw_minimap.c  */
+void	draw_rectangle(t_game *game, int x, int y);
+void	draw_rectangles(t_game *game);
+
+/*  mlx_loop.c  */
+int		deal_key(int key_code, t_game *game);
+int		ft_close(t_game *game);
+int		main_loop(t_game *game);
 
 /*  print.c  */
 void	put_string_fd(char *str, int fd);
 void	print_error_and_exit(char *str);
 
 /*  get_fc.c  */
-int     get_fc(char *line);
+int		get_fc(char *line);
 
 /*  get_map_array.c  */
 void	init_map_array(t_parsing_info *parsing_info);

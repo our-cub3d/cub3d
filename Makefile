@@ -20,6 +20,8 @@ FILES 					=	check_arguments.c \
 							get_map_array.c \
 							init.c \
 							main.c \
+							mlx_draw_minimap.c \
+							mlx_loop.c \
 							print.c \
 							read_map_utils.c \
 							read_map.c \
