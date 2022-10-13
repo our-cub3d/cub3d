@@ -1,5 +1,11 @@
 #include "../include/cub3d.h"
 #include <stdio.h>
+#include "../mlx/mlx.h"
+
+void	mlx_test()
+{
+	
+}
 
 int	main(int ac, char **av)
 {

@@ -50,7 +50,7 @@ clean:
 	make -C mlx clean
 
 fclean: clean
-	$(RM) $(NAME) $(MLX_FLAGS)
+	$(RM) $(NAME)
 	make -C libft fclean
 	make -C mlx clean
 
