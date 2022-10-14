@@ -5,7 +5,8 @@ CC 					=	cc
 CFLAGS				=	-Wall -Wextra -Werror -g3
 # MLX_FLAGS			=
 MLX_FLAGS			=	-Lmlx -lmlx -framework OpenGL -framework AppKit
-# 	arch -x86_64 gcc -L mlx -lmlx -framework OpenGL -framework AppKit *.clean
+# 	gcc -L mlx -lmlx -framework OpenGL -framework AppKit 01_
+# *.clean
 
 # INCLUDE			:= ./include/
 # INCLUDE_FILE	:= $(addprefix $(INCLUDE), cub3d.h, typedef.h)
