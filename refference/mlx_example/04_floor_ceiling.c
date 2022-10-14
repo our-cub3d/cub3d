@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   04_floor_ceiling.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/10/14 13:40:07 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/10/14 15:05:33 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,13 +227,14 @@ void	 calc(t_info *info)
 			perpWallDist = (mapY - info->posY + (1 - stepY) / 2) / rayDirY;// 4가지 방향을 알 수 있는 flag 일듯?
 
 		//Calculate height of line to draw on screen
-		int lineHeight = (int)(height / perpWallDist);
+		int lineHeight = (int)(height / perpWallDist);// 그릴 선분의 길이 == 윈도우 높이 / 광선의 길이 이기 때문에 
+		//광선의 길이가 짧을 수록 즉 분모가 작을수록 선분의 길이가 길어진다.
 
 		//calculate lowest and highest pixel to fill in current stripe
-		int drawStart = -lineHeight / 2 + height / 2;
+		int drawStart = -lineHeight / 2 + height / 2; // 그릴 선분의 시작점 == y 인덱스를 의미 
 		if(drawStart < 0)
 			drawStart = 0;
-		int drawEnd = lineHeight / 2 + height / 2;
+		int drawEnd = lineHeight / 2 + height / 2; //그릴 선분의 마지막점 == y인덱스를 의미
 		if(drawEnd >= height)
 			drawEnd = height - 1;
 
@@ -243,10 +244,11 @@ void	 calc(t_info *info)
 		// calculate value of wallX
 		double wallX;
 		if (side == 0)
-			wallX = info->posY + perpWallDist * rayDirY;
+			wallX = info->posY + perpWallDist * rayDirY;// 그리는 그림의 x좌표인것같다
 		else
 			wallX = info->posX + perpWallDist * rayDirX;
-		wallX -= floor(wallX);
+		wallX -= floor(wallX);//x좌표는 int 값이여야 하기 에 floor (내림함수) 를 사용하는것 같다.
+		//WALLX == 그리는 지점의 X좌표
 
 		// x coordinate on the texture
 		int texX = (int)(wallX * (double)texWidth);
