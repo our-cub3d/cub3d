@@ -44,6 +44,29 @@ void	fill_element(t_game *game, char input, int x, int y)
 	}
 }
 
+		// if (game->player->x)
+		// 	print_error_and_exit("too many players!\n");
+		// if (input == 'N')
+		// {
+		// 	game->player->dirX = 0;
+		// 	game->player->dirY = -1;
+		// }
+		// else if (input == 'W')
+		// {
+		// 	game->player->dirX = -1;
+		// 	game->player->dirY = 0;
+		// }
+		// else if (input == 'S')
+		// {
+		// 	game->player->dirX = 0;
+		// 	game->player->dirY = 1;
+		// }
+		// else if (input == 'E')
+		// {
+		// 	game->player->dirX = 1;
+		// 	game->player->dirY = 0;
+		// }
+
 void	fill_map_array(t_game *game, int fd, char *line)
 {
 	char *temp;
