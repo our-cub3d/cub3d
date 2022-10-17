@@ -28,7 +28,8 @@ void	fill_element(t_game *game, char input, int x, int y)
 		game->parsing_info->map[y][x] = E_ROAD;
 	else if (input == 'N' || input == 'W' || input == 'S' || input == 'E')
 	{
-		if (game->player->x)
+		printf("먼데, %c, (%d, %d)\n", input, x, y);
+		if (game->player->y)
 			print_error_and_exit("too many players!\n");
 		if (input == 'N')
 			game->player->angle = 0;
@@ -84,6 +85,7 @@ void	fill_map_array(t_game *game, int fd, char *line)
 			++x;
 		}
 		free(temp);
+		temp = NULL;
 		while (x < game->parsing_info->width)
 		{
 			game->parsing_info->map[y][x] = E_VOID;
@@ -91,6 +93,7 @@ void	fill_map_array(t_game *game, int fd, char *line)
 		}
 		++y;
 		temp = get_next_line(fd);
+		printf("temp : %s\n", temp);
 	}
 }
 

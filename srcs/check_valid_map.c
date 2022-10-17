@@ -63,7 +63,7 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 		temp = splited;
 		splited = NULL;
 		line = get_next_line(fd);
-		if (!line)
+		if (!line || line[0] == '\n')
 		{
 			is_end_line(temp);
 			free(temp);

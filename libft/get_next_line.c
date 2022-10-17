@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 13:57:46 by hogkim            #+#    #+#             */
-/*   Updated: 2022/07/11 18:41:44 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/17 11:54:17 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_restart(char *temp)
 	str = (char *)calloc((len - i), sizeof(char));
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, &temp[i + 1], len - i + 1);
+	ft_strlcpy(str, &temp[i + 1], len - i);
 	free(temp);
 	return (str);
 }
