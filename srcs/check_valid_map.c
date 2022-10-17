@@ -33,6 +33,8 @@ static void	check_middle_line(char *splited, char *temp, t_parsing_info *passing
 				(splited[i + 1] && ((!is_space(splited[i + 1])) && splited[i + 1] != '1')))//현재 줄의 오른쪽이 스페이스나 1이 아님
 				print_error_and_exit("wrong information4\n");
 		}
+		else if (splited[i] != '1' && is_space(temp[i]))
+			print_error_and_exit("wrong information1\n");
 		++i;
 	}
 	--i; // width의  \n을 빼서 저장
