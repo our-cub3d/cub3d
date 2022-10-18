@@ -179,16 +179,20 @@ void	 calc(t_info *info)
 		if(drawEnd >= height)
 			drawEnd = height - 1;
 
+
+
+
+
 		// texturing calculations
 		int texNum = worldMap[mapX][mapY] - 1; // 텍스처 0을 사용하려고
 
 		// calculate value of wallX
 		double wallX; 
-		if (side == 0)
+		if (side == 0) // 동 서 : x 면
 			wallX = info->posY + perpWallDist * rayDirY; // 정확히 벽이 맞은 곳
-		else
+		else // 북 남 : y 면
 			wallX = info->posX + perpWallDist * rayDirX;
-		wallX -= floor(wallX);//x좌표는 int 값이여야 하기 에 floor (내림함수) 를 사용하는것 같다.
+		wallX -= floor(wallX); // 내림, 소수점 아래 무시, (실제 맞은 곳 - mapX 라고 보면 쉬움)
 
 		// x coordinate on the texture
 		int texX = (int)(wallX * (double)texWidth);

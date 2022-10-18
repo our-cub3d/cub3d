@@ -17,7 +17,7 @@ void	draw_rectangle(t_game *game, int w, int h)
 		x = 0;
 		while (x < TILE_SIZE)
 		{
-			game->mlx->img_minimap.img_data[(h  + y) * img_w + w + x] = 0xFFFFFF;
+			game->minimap->img_data[(h  + y) * img_w + w + x] = 0xFFFFFF;
 			++x;
 		}
 		++y;

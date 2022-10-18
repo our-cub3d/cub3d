@@ -7,13 +7,14 @@
 
 # define	TILE_SIZE	7
 
-#define X_EVENT_KEY_PRESS	2
-#define X_EVENT_KEY_EXIT	17
-#define KEY_ESC				53
+# define X_EVENT_KEY_PRESS	2
+# define X_EVENT_KEY_EXIT	17
+# define KEY_ESC				53
 
 typedef	struct s_cube_info		t_cube_info;
 typedef struct s_player			t_player;
 typedef struct s_parsing_info	t_parsing_info;
+typedef struct s_raycasting		t_raycasting;
 typedef struct s_img			t_img;
 typedef struct s_mlx			t_mlx;
 typedef struct s_game			t_game;
@@ -43,9 +44,12 @@ struct	s_cube_info
 
 struct	s_player
 {
-	float	angle;
-	int		x;
-	int		y;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 };
 
 struct	s_parsing_info
@@ -53,6 +57,21 @@ struct	s_parsing_info
 	int			width;
 	int			height;
 	char		**map;
+};
+
+struct s_raycasting
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_x;
+	double	delta_y;
+	int		step_x;
+	int		step_y;
 };
 
 /* mlx */
@@ -73,9 +92,8 @@ struct	s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_img	img_minimap;
 };
-
+// mlx관련 포인터 나중에 s_game으로 빼자
 /* game */
 
 struct	s_game
@@ -84,6 +102,11 @@ struct	s_game
 	t_player		*player;
 	t_parsing_info	*parsing_info;
 	t_mlx			*mlx;
+	// void	*win_ptr 을 여기서 선언
+
+	int				*wall_texture[4];
+	t_img			*minimap;
+	t_img			*screen;
 };
 
 #endif

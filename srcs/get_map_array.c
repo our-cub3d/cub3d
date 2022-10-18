@@ -18,6 +18,38 @@ void	init_map_array(t_parsing_info *parsing_info)
 	parsing_info->map = map;
 }
 
+static void	get_player_dir(t_game *game, char input)
+{
+	if (input == 'N')
+	{
+		game->player->dir_x = 0;
+		game->player->dir_y = -1.0;
+		game->player->plane_x = 0.66;
+		game->player->plane_y = 0;
+	}
+	else if (input == 'W')
+	{
+		game->player->dir_x = -1.0;
+		game->player->dir_y = 0;
+		game->player->plane_x = 0;
+		game->player->plane_y = -0.66;
+	}
+	else if (input == 'S')
+	{
+		game->player->dir_x = 0;
+		game->player->dir_y = 1.0;
+		game->player->plane_x = -0.66;
+		game->player->plane_y = 0;
+	}
+	else if (input == 'E')
+	{
+		game->player->dir_x = 1.0;
+		game->player->dir_y = 0;
+		game->player->plane_x = 0;
+		game->player->plane_y = 0.66;
+	}
+}
+
 void	fill_element(t_game *game, char input, int x, int y)
 {
 	if (is_space(input))
@@ -28,45 +60,14 @@ void	fill_element(t_game *game, char input, int x, int y)
 		game->parsing_info->map[y][x] = E_ROAD;
 	else if (input == 'N' || input == 'W' || input == 'S' || input == 'E')
 	{
-		printf("먼데, %c, (%d, %d)\n", input, x, y);
-		if (game->player->y)
+		if (game->player->pos_y)
 			print_error_and_exit("too many players!\n");
-		if (input == 'N')
-			game->player->angle = 0;
-		else if (input == 'W')
-			game->player->angle = M_PI / 2;
-		else if (input == 'S')
-			game->player->angle = M_PI;
-		else if (input == 'E')
-			game->player->angle = M_PI + M_PI / 2;
+		get_player_dir(game, input);
 		game->player->x = x;
 		game->player->y = y;
 		game->parsing_info->map[y][x] = E_ROAD;
 	}
 }
-
-		// if (game->player->x)
-		// 	print_error_and_exit("too many players!\n");
-		// if (input == 'N')
-		// {
-		// 	game->player->dirX = 0;
-		// 	game->player->dirY = -1;
-		// }
-		// else if (input == 'W')
-		// {
-		// 	game->player->dirX = -1;
-		// 	game->player->dirY = 0;
-		// }
-		// else if (input == 'S')
-		// {
-		// 	game->player->dirX = 0;
-		// 	game->player->dirY = 1;
-		// }
-		// else if (input == 'E')
-		// {
-		// 	game->player->dirX = 1;
-		// 	game->player->dirY = 0;
-		// }
 
 void	fill_map_array(t_game *game, int fd, char *line)
 {
