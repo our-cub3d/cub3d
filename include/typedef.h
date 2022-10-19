@@ -21,6 +21,7 @@
 typedef	struct s_cube_info		t_cube_info;
 typedef struct s_player			t_player;
 typedef struct s_parsing_info	t_parsing_info;
+typedef struct s_tex			t_tex;
 typedef struct s_raycasting		t_raycasting;
 typedef struct s_img			t_img;
 typedef struct s_mlx			t_mlx;
@@ -66,6 +67,13 @@ struct	s_parsing_info
 	char		**map;
 };
 
+struct s_tex
+{
+	double	pos;
+	int		x;
+	int		y;
+};
+
 struct s_raycasting
 {
 	double	camera_x;
@@ -85,6 +93,7 @@ struct s_raycasting
 	int		draw_start;
 	int		draw_end;
 	int		tex_num;
+};
 
 /* mlx */
 

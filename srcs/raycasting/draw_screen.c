@@ -77,36 +77,53 @@ static void	get_wall_height(t_raycasting *info, t_player *player, int *side)
 		info->draw_end = WIN_H - 1;
 }
 
-static void	painting_wall(t_game *game, t_raycasting *info, int *side)
+static void	init_tex(t_tex *tex)
+{
+	tex->pos = 0;
+	tex->x = 0;
+	tex->y = 0;
+}
+
+static void	painting_wall(t_game *game, t_raycasting *info, int *side, int x)
 {
 	double	wall_x;
 	double	step;
-	double	tex_pos;
-	int		tex_x;
-	int		tex_y; //구조체 만들어서 빼기
+	t_tex	tex;
 	int		y;
 	
+	init_tex(&tex);
 	if (*side == 0)
 		wall_x = game->player->pos_y + info->perp_wall_dist * info->ray_dir_y;
 	else
 		wall_x = game->player->pos_x + info->perp_wall_dist * info->ray_dir_x;
 	wall_x -= floor(wall_x);
-	tex_x = (int)(wall_x * (double)TEX_SIZE);
+	tex.x = (int)(wall_x * (double)TEX_SIZE);
 	if (*side == 0 && info->ray_dir_x > 0)
-		tex_x = TEX_SIZE - tex_x - 1;
+		tex.x = TEX_SIZE - tex.x - 1;
 	if (*side == 1 && info->ray_dir_y < 0)
-		tex_x = TEX_SIZE - tex_x - 1;
+		tex.x = TEX_SIZE - tex.x - 1;
 	step = 1.0 * TEX_SIZE / info->line_height;
-	tex_pos = (info->draw_start - WIN_H / 2 + info->line_height / 2) * step;
-
+	tex.pos = (info->draw_start - WIN_H / 2 + info->line_height / 2) * step;
 	y = info->draw_start;
 	while (y < info->draw_end)
 	{
-		tex_y = (int)tex_pos & (TEX_SIZE - 1);
-		tex_pos += step;
-		// 여기 확인 x 데리고 와야함
-		game->screen->img_data[y][x] = game->wall_texture[info->tex_num][TEX_SIZE * tex_y + tex_x];
+		tex.y = (int)tex.pos & (TEX_SIZE - 1);
+		tex.pos += step;
+		game->screen->img_data[WIN_W * y + x] = game->wall_texture[info->tex_num][TEX_SIZE * tex.y + tex.x];
 		++y;
+	}
+}
+
+static void	get_tex_num(t_raycasting *info, int *side)
+{
+	if (*side == 0)
+	{
+		if (info->ray_dir_x < 0)
+			
+	}
+	else if (*side == 1)
+	{
+		
 	}
 }
 
@@ -126,11 +143,11 @@ void	draw_screen(t_game *game)
 		follow_ray_dda(game, &info, &side);
 		get_wall_height(&info, game->player, &side);
 //---------------------------------------------------------------------//
-
-		int texNum = worldMap[mapX][mapY] - 1; //동서남북 텍스쳐 판별
+		get_tex_num(&info, &side);
+		// worldMap[info.map_x][info.map_y] - 1; //동서남북 텍스쳐 판별
 
 //---------------------------------------------------------------------//
-		painting_wall(game, &info, &side);
+		painting_wall(game, &info, &side, x);
 		x++;
 	}
 	//put_image 들어올 곳.
