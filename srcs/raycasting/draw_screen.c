@@ -83,7 +83,7 @@ static void	painting_wall(t_game *game, t_raycasting *info, int *side)
 	double	step;
 	double	tex_pos;
 	int		tex_x;
-	int		tex_y;
+	int		tex_y; //구조체 만들어서 빼기
 	int		y;
 	
 	if (*side == 0)
@@ -104,7 +104,7 @@ static void	painting_wall(t_game *game, t_raycasting *info, int *side)
 	{
 		tex_y = (int)tex_pos & (TEX_SIZE - 1);
 		tex_pos += step;
-		// 여기 확인
+		// 여기 확인 x 데리고 와야함
 		game->screen->img_data[y][x] = game->wall_texture[info->tex_num][TEX_SIZE * tex_y + tex_x];
 		++y;
 	}
