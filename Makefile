@@ -14,6 +14,9 @@ MLX_FLAGS			=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 RM					=	rm -f
 
 SRC_DIR 			= 	./srcs/
+PARSE_DIR			=	./srcs/parsing/
+RAY_DIR				=	./srcs/raycasting/
+MINI_DIR			=	./srcs/draw_minimap/
 
 FILES 					=	check_arguments.c \
 	 						check_valid_map.c \
@@ -29,7 +32,10 @@ FILES 					=	check_arguments.c \
 							read_wall_texture.c \
 							test_print.c \
 
-SRCS					=	$(addprefix $(SRC_DIR), $(FILES))
+RAY_FILES				=	draw_screen.c \
+
+SRCS					=	$(addprefix $(SRC_DIR), $(FILES)) \
+							$(addprefix $(RAY_DIR), $(RAY_FILES)) \
 
 OBJS					=	$(SRCS:%.c=%.o)
 

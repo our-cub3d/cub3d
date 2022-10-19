@@ -54,4 +54,8 @@ int		read_wall_texture(char *line, t_game *game);
 void	print_map(t_game *game);
 void	print_cube_info(t_cube_info *cube);
 
+
+/*  draw_screen.c  */
+void	draw_screen(t_game *game);
+
 #endif

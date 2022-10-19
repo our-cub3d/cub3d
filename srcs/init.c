@@ -10,6 +10,8 @@ void	load_xpm(t_game *game, int *texture, char *path, t_img *img)
 	img->img_ptr = mlx_xpm_file_to_image(game->mlx->mlx_ptr, path, &img->img_width, &img->img_height);
 	img->img_data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
 	y = 0;
+	if (img->img_height != 64 || img->img_width != 64)
+		print_error_and_exit("wrong infomation\n");
 	while (y < img->img_height)
 	{
 		x = 0;

@@ -6,10 +6,17 @@
 # define	WIN_H		400
 
 # define	TILE_SIZE	7
+# define	TEX_SIZE	64
+
+// WASD key value
+# define KEY_W		13
+# define KEY_A		0
+# define KEY_S		1
+# define KEY_D		2
+# define KEY_ESC	53
 
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
-# define KEY_ESC				53
 
 typedef	struct s_cube_info		t_cube_info;
 typedef struct s_player			t_player;
@@ -72,7 +79,12 @@ struct s_raycasting
 	double	delta_y;
 	int		step_x;
 	int		step_y;
-};
+	double	perp_wall_dist;
+	int		tex_width;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		tex_num;
 
 /* mlx */
 
@@ -94,6 +106,7 @@ struct	s_mlx
 	void	*win_ptr;
 };
 // mlx관련 포인터 나중에 s_game으로 빼자
+
 /* game */
 
 struct	s_game
