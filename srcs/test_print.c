@@ -12,8 +12,8 @@ void	print_map(t_game *game)
 		printf("\n");
 	}
 
-	printf("\n\n");
-	printf("player : %f, %d, %d\n", game->player->angle, game->player->x, game->player->y);
+	// printf("\n\n");
+	// printf("player : %f, %d, %d\n", game->player->angle, game->player->pos_x, game->player->pos_y);
 }
 
 void print_cube_info(t_cube_info *cube)

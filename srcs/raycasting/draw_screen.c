@@ -1,4 +1,5 @@
 #include "../../include/cub3d.h"
+#include "../../mlx/mlx.h"
 #include <math.h>
 
 static void	init_raycating(t_game *game, t_raycasting *info, int x)
@@ -119,11 +120,39 @@ static void	get_tex_num(t_raycasting *info, int *side)
 	if (*side == 0)
 	{
 		if (info->ray_dir_x < 0)
-			
+			info->tex_num = D_EA;
+		else
+			info->tex_num = D_WE;
 	}
-	else if (*side == 1)
+	else
 	{
-		
+		if (info->ray_dir_y < 0)
+			info->tex_num = D_SO;
+		else
+			info->tex_num = D_NO;
+	}
+}
+
+#include <stdio.h> //----------------------------
+static void	init_screen_image(t_game *game)
+{
+	t_img	*screen;
+	int		index;
+
+	screen = game->screen;
+	screen->img_ptr = mlx_new_image(game->mlx->mlx_ptr, WIN_W, WIN_H);
+	screen->img_data = (int *)mlx_get_data_addr(screen->img_ptr, \
+												&screen->bpp, &screen->size_l, &screen->endian);
+	index = 0;
+	while (index < WIN_H * WIN_W / 2)
+	{
+		screen->img_data[index] = game->cube_info->C;
+		++index;
+	}
+	while (index < WIN_H * WIN_W)
+	{
+		screen->img_data[index] = game->cube_info->F;
+		++index;
 	}
 }
 
@@ -133,7 +162,8 @@ void	draw_screen(t_game *game)
 	int				side;
 	t_raycasting	info;
 
-	//스크린 이미지 하나 만들고 천장, 바닥 칠한 상태 만들고
+	//mlx_destroy_image(game->mlx->mlx_ptr, game->screen->img_ptr);
+	init_screen_image(game);
 	x = 0;
 	while (x < WIN_W)
 	{
@@ -142,13 +172,9 @@ void	draw_screen(t_game *game)
 		side = 0;
 		follow_ray_dda(game, &info, &side);
 		get_wall_height(&info, game->player, &side);
-//---------------------------------------------------------------------//
 		get_tex_num(&info, &side);
-		// worldMap[info.map_x][info.map_y] - 1; //동서남북 텍스쳐 판별
-
-//---------------------------------------------------------------------//
 		painting_wall(game, &info, &side, x);
 		x++;
 	}
-	//put_image 들어올 곳.
+	mlx_put_image_to_window(game->mlx->mlx_ptr, game->mlx->win_ptr, game->screen->img_ptr, 0, 0);
 }

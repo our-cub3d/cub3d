@@ -28,7 +28,14 @@ void	load_xpm(t_game *game, int *texture, char *path, t_img *img)
 void	load_texture(t_game	*game)
 {
 	t_img	img;
+	int		x;
 
+	x = 0;
+	while(x < 4)
+	{
+		game->wall_texture[x] = calloc(TEX_SIZE * TEX_SIZE, sizeof(int));
+		++x;
+	}
 	load_xpm(game, game->wall_texture[0], game->cube_info->NO, &img);
 	load_xpm(game, game->wall_texture[1], game->cube_info->SO, &img);
 	load_xpm(game, game->wall_texture[2], game->cube_info->WE, &img);

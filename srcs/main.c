@@ -5,7 +5,7 @@
 int	main(int ac, char **av)
 {
 	t_game	game;
-	char	*array[4];
+	// char	*array[4];
 
 	check_arguments(ac, av);
 	init_all(&game);

@@ -63,8 +63,8 @@ void	fill_element(t_game *game, char input, int x, int y)
 		if (game->player->pos_y)
 			print_error_and_exit("too many players!\n");
 		get_player_dir(game, input);
-		game->player->x = x;
-		game->player->y = y;
+		game->player->pos_x = x;
+		game->player->pos_y = y;
 		game->parsing_info->map[y][x] = E_ROAD;
 	}
 }
@@ -94,7 +94,6 @@ void	fill_map_array(t_game *game, int fd, char *line)
 		}
 		++y;
 		temp = get_next_line(fd);
-		printf("temp : %s\n", temp);
 	}
 }
 
@@ -110,6 +109,6 @@ void	get_map_array(t_game *game, int fd)
 		line = get_next_line(fd);
 	}
 	fill_map_array(game, fd, line);
-	if (game->player->x == 0)
+	if (game->player->pos_x == 0)
 		print_error_and_exit("there's no player!\n");
 }

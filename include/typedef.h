@@ -28,7 +28,7 @@ typedef struct s_mlx			t_mlx;
 typedef struct s_game			t_game;
 
 typedef enum e_element			t_element;
-typedef enum e_angle			t_angle;
+typedef enum e_cube_dir			t_cube_dir;
 
 /* parsing */
 
@@ -38,6 +38,14 @@ enum	e_element
 	E_WALL,
 	E_VOID
 	// E_PLAYER,
+};
+
+enum	e_cube_dir // for textnum
+{
+	D_NO,
+	D_SO,
+	D_WE,
+	D_EA
 };
 
 struct	s_cube_info

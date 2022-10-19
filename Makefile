@@ -2,7 +2,7 @@ NAME 				=	cub3d
 LIBFT				=	./libft/libft.a
 
 CC 					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -g3
+CFLAGS				=	-Wall -Wextra -Werror
 # MLX_FLAGS			=
 MLX_FLAGS			=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 # 	gcc -L mlx -lmlx -framework OpenGL -framework AppKit 01_
@@ -18,7 +18,8 @@ PARSE_DIR			=	./srcs/parsing/
 RAY_DIR				=	./srcs/raycasting/
 MINI_DIR			=	./srcs/draw_minimap/
 
-FILES 					=	check_arguments.c \
+FILES 					=	raycasting/draw_screen.c \
+							check_arguments.c \
 	 						check_valid_map.c \
 							get_fc.c \
 							get_map_array.c \
