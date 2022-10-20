@@ -6,7 +6,7 @@ static void	init_raycating(t_game *game, t_raycasting *info, int x)
 {
 	info->camera_x = 2 * x / (double)WIN_W - 1;
 	info->ray_dir_x = game->player->dir_x + game->player->plane_x * info->camera_x;
-	info->ray_dir_y = game->player->dir_x + game->player->plane_y * info->camera_x;
+	info->ray_dir_y = game->player->dir_y + game->player->plane_y * info->camera_x;
 	info->map_x = (int)game->player->pos_x;
 	info->map_y = (int)game->player->pos_y;
 	info->delta_x = fabs(1 / info->ray_dir_x);
@@ -69,8 +69,13 @@ static void	get_wall_height(t_raycasting *info, t_player *player, int *side)
 	else
 		info->perp_wall_dist = (info->map_y - player->pos_y + \
 								(1 - info->step_y) / 2) / info->ray_dir_y;
+	// (void)player;
+	// if (*side == 0)
+	// 	info->perp_wall_dist = info->side_dist_x - info->delta_x;
+	// else
+	// 	info->perp_wall_dist = info->side_dist_y - info->delta_y;
 	info->line_height = (int)(WIN_H / info->perp_wall_dist);
-	info->draw_start = info->line_height / 2 + WIN_H / 2;
+	info->draw_start = -info->line_height / 2 + WIN_H / 2;
 	if (info->draw_start < 0)
 		info->draw_start = 0;
 	info->draw_end = info->line_height / 2 + WIN_H / 2;
@@ -133,7 +138,6 @@ static void	get_tex_num(t_raycasting *info, int *side)
 	}
 }
 
-#include <stdio.h> //----------------------------
 static void	init_screen_image(t_game *game)
 {
 	t_img	*screen;

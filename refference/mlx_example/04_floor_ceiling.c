@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/10/20 12:18:04 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/10/20 13:03:01 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,8 @@ void	 calc(t_info *info)
 				side = 1;
 			}
 			//Check if ray has hit a wall
-			if (worldMap[mapX][mapY] > 0) hit = 1;
+			if (worldMap[mapX][mapY] > 0) 
+				hit = 1;
 		}
 		if (side == 0)
 			perpWallDist = (mapX - info->posX + (1 - stepX) / 2) / rayDirX;
