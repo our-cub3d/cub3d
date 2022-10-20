@@ -69,11 +69,6 @@ static void	get_wall_height(t_raycasting *info, t_player *player, int *side)
 	else
 		info->perp_wall_dist = (info->map_y - player->pos_y + \
 								(1 - info->step_y) / 2) / info->ray_dir_y;
-	// (void)player;
-	// if (*side == 0)
-	// 	info->perp_wall_dist = info->side_dist_x - info->delta_x;
-	// else
-	// 	info->perp_wall_dist = info->side_dist_y - info->delta_y;
 	info->line_height = (int)(WIN_H / info->perp_wall_dist);
 	info->draw_start = -info->line_height / 2 + WIN_H / 2;
 	if (info->draw_start < 0)

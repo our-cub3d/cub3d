@@ -5,8 +5,11 @@
 # define	WIN_W		800
 # define	WIN_H		400
 
-# define	TILE_SIZE	7
-# define	TEX_SIZE	64
+# define TILE_SIZE	7
+# define TEX_SIZE	64
+
+# define MOV_SPEED	0.05
+# define ROT_SPEED	0.05
 
 // WASD key value
 # define KEY_W		13

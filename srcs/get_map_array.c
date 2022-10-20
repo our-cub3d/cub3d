@@ -63,8 +63,8 @@ void	fill_element(t_game *game, char input, int x, int y)
 		if (game->player->pos_y)
 			print_error_and_exit("too many players!\n");
 		get_player_dir(game, input);
-		game->player->pos_x = x;
-		game->player->pos_y = y;
+		game->player->pos_x = x + 0.5;
+		game->player->pos_y = y + 0.5;
 		game->parsing_info->map[y][x] = E_ROAD;
 	}
 }
