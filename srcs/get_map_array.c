@@ -20,7 +20,7 @@ void	init_map_array(t_parsing_info *parsing_info)
 
 static void	get_player_dir(t_game *game, char input)
 {
-	if (input == 'N')
+	if (input == 'N')// 
 	{
 		game->player->dir_x = 0;
 		game->player->dir_y = -1.0;

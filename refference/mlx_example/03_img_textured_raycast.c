@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_img_textured_raycast_macos.c                    :+:      :+:    :+:   */
+/*   03_img_textured_raycast.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:18:03 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/21 08:10:51 by yohlee           ###   ########.fr       */
+/*   Updated: 2022/10/20 10:42:11 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,7 +305,7 @@ void	load_texture(t_info *info)
 	load_image(info, info->texture[2], "textures/purplestone.xpm", &img);
 	load_image(info, info->texture[3], "textures/greystone.xpm", &img);
 	load_image(info, info->texture[4], "textures/bluestone.xpm", &img);
-	load_image(info, info->texture[5], "textures/mossy.xpm", &img);
+	load_image(info, info->texture[5], "../../images/wall_n.xpm", &img);
 	load_image(info, info->texture[6], "textures/wood.xpm", &img);
 	load_image(info, info->texture[7], "textures/colorstone.xpm", &img);
 }

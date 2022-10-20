@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:53:20 by yohlee            #+#    #+#             */
-/*   Updated: 2022/10/18 15:22:54 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/10/20 12:18:04 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -416,7 +416,7 @@ void	load_texture(t_info *info)
 	load_image(info, info->texture[7], "textures/colorstone.xpm", &img);
 }
 
-int	main(void)
+int	main(void) 
 {
 	t_info info;
 	info.mlx = mlx_init();
