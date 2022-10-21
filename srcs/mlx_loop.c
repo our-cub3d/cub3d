@@ -56,9 +56,18 @@ int		main_loop(t_game *game)
 
 	/* minimap */
 	draw_rectangles(game); // 밖으로 빼기
-	mlx_put_image_to_window(game->mlx, game->mlx->win_ptr, \
+	mlx_put_image_to_window(game->mlx->mlx_ptr, game->mlx->win_ptr, \
 							game->minimap->img_ptr, \
 							WIN_W - (game->parsing_info->width * TILE_SIZE), \
 							WIN_H - (game->parsing_info->height * TILE_SIZE));
+	// mlx_string_put(game->mlx->mlx_ptr, game->mlx->win_ptr, \
+	// 				WIN_W - (game->parsing_info->width * TILE_SIZE) + game->parsing_info->width * game->player->pos_x, \
+	// 				WIN_H - (game->parsing_info->height * TILE_SIZE) + game->parsing_info->height * game->player->pos_y, \
+	// 				0xFF00FF, "JKKKKKK");
+	// mlx_pixel_put(game->mlx->mlx_ptr, game->mlx->win_ptr, WIN_W - (game->parsing_info->width * TILE_SIZE) + game->parsing_info->width * game->player->pos_x, \
+	// 				WIN_H - (game->parsing_info->height * TILE_SIZE) + game->parsing_info->height * game->player->pos_y, 0xFF00FF);
+	// mlx_string_put(game->mlx->mlx_ptr, game->mlx->win_ptr, 0 , 0 + 3, 0xFF00FF, ".");
+	mlx_string_put(game->mlx->mlx_ptr, game->mlx->win_ptr, WIN_W - (game->parsing_info->width * TILE_SIZE) + game->player->pos_x * TILE_SIZE, WIN_H - (game->parsing_info->height * TILE_SIZE) + game->player->pos_y * TILE_SIZE,\
+					0xFF00FF, ".");
 	return (0);
 }
