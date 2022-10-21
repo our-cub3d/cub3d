@@ -161,7 +161,7 @@ void	draw_screen(t_game *game)
 	int				side;
 	t_raycasting	info;
 
-	//mlx_destroy_image(game->mlx->mlx_ptr, game->screen->img_ptr);
+	mlx_destroy_image(game->mlx->mlx_ptr, game->screen->img_ptr);
 	init_screen_image(game);
 	x = 0;
 	while (x < WIN_W)

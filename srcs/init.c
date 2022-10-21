@@ -61,7 +61,7 @@ void	init_mlx(t_game *game)
 	game->minimap->img_data = (int *)mlx_get_data_addr(game->minimap->img_ptr, \
 						&(game->minimap->bpp), &(game->minimap->size_l), \
 						&(game->minimap->endian));
-} // img는 파싱 후에 만듦
+}
 
 void	init_all(t_game	*game)
 {
