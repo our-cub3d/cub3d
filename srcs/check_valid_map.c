@@ -11,15 +11,25 @@ char	*remove_newline(char *line, char *set)
 	return (splited[0]);
 }
 
+static void	screening_test(char *splited, char *temp)
+{
+	if (splited[0] == '0' || splited[ft_strlen(splited) - 1] == '0')
+		print_error_and_exit("wrong information\n");
+	if ((int)ft_strlen(splited) < (int)ft_strlen(temp))
+		if (ft_strchr(&temp[(int)ft_strlen(splited)], '0'))
+			print_error_and_exit("wrong information\n");
+	if (!is_map(splited))
+		print_error_and_exit("wrong information0-1\n");
+}
+
 static void	check_middle_line(char *splited, char *temp, t_parsing_info *passing_info)
 {
 	int	i;
 
+	screening_test(splited, temp);
 	i = 0;
 	while (splited[i])
 	{
-		if (!is_map(splited))
-				print_error_and_exit("wrong information0-1\n");
 		if (i >= (int)ft_strlen(temp) && !is_space(splited[i]) && \
 			splited[i] != '1') //현재 이전 줄보다 긴줄. 근데 끝에 1이나 스페이스가 아닌게 들어가 있음
 				print_error_and_exit("wrong information1\n");
