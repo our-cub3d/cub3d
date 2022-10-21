@@ -1,7 +1,7 @@
-NO ./la_moon.xpm
-SO ./la_piano.xpm
-WE ./la_poster.xpm
-EA ./la_two_on_piano.xpm
+NO ./sj/la_moon.xpm
+SO ./sj/la_piano.xpm
+WE ./sj/la_poster.xpm
+EA ./sj/la_two_on_piano.xpm
 C 14, 12, 50
 F 14, 12, 50
 
