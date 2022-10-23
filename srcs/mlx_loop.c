@@ -4,6 +4,23 @@
 #include <math.h>
 #include "../mlx/mlx.h"
 
+void	draw_p(t_game *game)
+{
+	int	player_x;
+	int	player_y;
+	int	minimap_width;
+
+	player_x = game->player->pos_x * TILE_SIZE;
+	player_y = game->player->pos_y * TILE_SIZE;
+	minimap_width = game->parsing_info->width * TILE_SIZE;
+	game->minimap->img_data[player_y * minimap_width + player_x] = 0xFF00FF;
+	game->minimap->img_data[(player_y - 1) * minimap_width + player_x] = 0xFF00FF;
+	game->minimap->img_data[(player_y + 1) * minimap_width + player_x] = 0xFF00FF;
+	game->minimap->img_data[player_y * minimap_width + player_x - 1] = 0xFF00FF;
+	game->minimap->img_data[player_y * minimap_width + player_x + 1] = 0xFF00FF;
+}
+
+
 int		deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_W)
@@ -67,7 +84,8 @@ int		main_loop(t_game *game)
 	// mlx_pixel_put(game->mlx->mlx_ptr, game->mlx->win_ptr, WIN_W - (game->parsing_info->width * TILE_SIZE) + game->parsing_info->width * game->player->pos_x, \
 	// 				WIN_H - (game->parsing_info->height * TILE_SIZE) + game->parsing_info->height * game->player->pos_y, 0xFF00FF);
 	// mlx_string_put(game->mlx->mlx_ptr, game->mlx->win_ptr, 0 , 0 + 3, 0xFF00FF, ".");
-	mlx_string_put(game->mlx->mlx_ptr, game->mlx->win_ptr, WIN_W - (game->parsing_info->width * TILE_SIZE) + game->player->pos_x * TILE_SIZE, WIN_H - (game->parsing_info->height * TILE_SIZE) + game->player->pos_y * TILE_SIZE,\
-					0xFF00FF, ".");
+	// mlx_string_put(game->mlx->mlx_ptr, game->mlx->win_ptr, WIN_W - (game->parsing_info->width * TILE_SIZE) + game->player->pos_x * TILE_SIZE, WIN_H - (game->parsing_info->height * TILE_SIZE) + game->player->pos_y * TILE_SIZE,\
+	// 				0xFF00FF, ".");
+	draw_p(game);
 	return (0);
 }
