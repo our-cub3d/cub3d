@@ -7,9 +7,9 @@ void	put_string_fd(char *str, int fd)
 	int	len;
 
 	len = 0;
-	while(str[len])
+	while (str[len])
 		++len;
-	write(fd, str,len);
+	write (fd, str, len);
 }
 
 void	print_error_and_exit(char *str)

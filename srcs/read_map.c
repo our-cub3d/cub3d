@@ -43,11 +43,9 @@ void	read_map(char *name_of_map, t_game *game)
 		free(line);
 		line = get_next_line(fd);
 	}
-	check_valid_map(line, game->parsing_info, fd); //맵의 유효성 검사. 양 끝단, 스페이스 전 좌우 비교
+	check_valid_map(line, game->parsing_info, fd);
 	close(fd);
 	fd = open(name_of_map, O_RDONLY);
 	get_map_array(game, fd);
 	close(fd);
-	print_map(game);
-	//fd = open(name_of_map, O_RDONLY);// malloc 해서 파싱-> 플레이어가 2개 이상인 경우 검사. 플레이어가 없거나
 }

@@ -2,24 +2,42 @@
 #include "../libft/libft.h"
 #include "../mlx/mlx.h"
 
+void	init_map_array(t_parsing_info *parsing_info)
+{
+	char	**map;
+	int		y;
+
+	map = ft_calloc(parsing_info->height, sizeof(char *));
+	y = 0;
+	while (y < parsing_info->height)
+	{
+		map[y] = ft_calloc(parsing_info->width + 1, sizeof(char));
+		++y;
+	}
+	parsing_info->map = map;
+}
+
 void	load_xpm(t_game *game, int *texture, char *path, t_img *img)
 {
 	int	y;
 	int	x;
 
-	img->img_ptr = mlx_xpm_file_to_image(game->mlx->mlx_ptr, path, &img->img_width, &img->img_height);
+	img->img_ptr = mlx_xpm_file_to_image(game->mlx->mlx_ptr, path, \
+						&img->img_width, &img->img_height);
 	if (img->img_ptr == NULL)
-		print_error_and_exit("wrong information!");
-	img->img_data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
+		print_error_and_exit("wrong information!10\n");
+	img->img_data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, \
+							&img->size_l, &img->endian);
 	y = 0;
 	if (img->img_height != 64 || img->img_width != 64)
-		print_error_and_exit("wrong infomation\n");
+		print_error_and_exit("wrong infomation11\n");
 	while (y < img->img_height)
 	{
 		x = 0;
 		while (x < img->img_width)
 		{
-			texture[img->img_width * y + x] = img->img_data[img->img_width * y + x];
+			texture[img->img_width * y + x] = \
+						img->img_data[img->img_width * y + x];
 			++x;
 		}
 		++y;
@@ -33,7 +51,7 @@ void	load_texture(t_game	*game)
 	int		x;
 
 	x = 0;
-	while(x < 4)
+	while (x < 4)
 	{
 		game->wall_texture[x] = calloc(TEX_SIZE * TEX_SIZE, sizeof(int));
 		++x;

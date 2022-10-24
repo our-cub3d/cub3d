@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 
-int	is_space(char	c)
+int	is_space(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\v' || c == '\n' \
 		|| c == '\v' || c == '\f' || c == '\r')
@@ -29,10 +29,10 @@ int	is_end_line(char *line)
 	int	i;
 
 	i = 0;
-	while(line[i])
+	while (line[i])
 	{
 		if (line[i] != '1' && !is_space(line[i]))
-			print_error_and_exit("wrong information6\n"); //첫줄에 1이나 spaces가 아닌 문자
+			print_error_and_exit("wrong information6\n");
 		++i;
 	}
 	return (i);

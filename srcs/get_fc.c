@@ -9,7 +9,7 @@ static int	is_valid_fc(char *line, int i, int num_count, int comma_count)
 	k = 0;
 	while (is_space(line[i]))
 		++i;
-while (k < 2)
+	while (k < 2)
 	{
 		while (line[i] >= '0' && line[i] <= '9')
 			++i;
@@ -42,6 +42,6 @@ int	get_fc(char *line)
 	else
 		return (0);
 	if (!is_valid_fc(line, i, 0, 0))
-		print_error_and_exit("fc!!!!! wrong information!\n");
+		print_error_and_exit("wrong information!10\n");
 	return (1);
 }

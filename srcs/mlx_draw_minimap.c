@@ -6,22 +6,22 @@ void	draw_player(t_game *game)
 {
 	int	player_x;
 	int	player_y;
-	int	minimap_width;
+	int	mini_width;
 
 	player_x = game->player->pos_x * TILE_SIZE;
 	player_y = game->player->pos_y * TILE_SIZE;
-	minimap_width = game->parsing_info->width * TILE_SIZE;
-	game->minimap->img_data[player_y * minimap_width + player_x] = 0xFF00FF;
-	game->minimap->img_data[(player_y - 1) * minimap_width + player_x] = 0xFF00FF;
-	game->minimap->img_data[(player_y + 1) * minimap_width + player_x] = 0xFF00FF;
-	game->minimap->img_data[player_y * minimap_width + player_x - 1] = 0xFF00FF;
-	game->minimap->img_data[player_y * minimap_width + player_x + 1] = 0xFF00FF;
+	mini_width = game->parsing_info->width * TILE_SIZE;
+	game->minimap->img_data[player_y * mini_width + player_x] = 0xFF00FF;
+	game->minimap->img_data[(player_y - 1) * mini_width + player_x] = 0xFF00FF;
+	game->minimap->img_data[(player_y + 1) * mini_width + player_x] = 0xFF00FF;
+	game->minimap->img_data[player_y * mini_width + player_x - 1] = 0xFF00FF;
+	game->minimap->img_data[player_y * mini_width + player_x + 1] = 0xFF00FF;
 }
 
 void	draw_rectangle(t_game *game, int w, int h)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 	int	img_w;
 
 	w *= TILE_SIZE;

@@ -3,24 +3,9 @@
 #include <math.h>
 #include <stdio.h>
 
-void	init_map_array(t_parsing_info *parsing_info)
+void	set_ns_dir_and_plane(t_game *game, char input)
 {
-	char	**map;
-	int		y;
-
-	map = ft_calloc(parsing_info->height, sizeof(char *));
-	y = 0;
-	while (y < parsing_info->height)
-	{
-		map[y] = ft_calloc(parsing_info->width + 1, sizeof(char));
-		++y;
-	}
-	parsing_info->map = map;
-}
-
-static void	get_player_dir(t_game *game, char input)
-{
-	if (input == 'N')// 
+	if (input == 'N')
 	{
 		game->player->dir_x = 0;
 		game->player->dir_y = -1.0;
@@ -34,6 +19,14 @@ static void	get_player_dir(t_game *game, char input)
 		game->player->plane_x = 0;
 		game->player->plane_y = -0.66;
 	}
+}
+
+static void	get_player_dir(t_game *game, char input)
+{
+	if (input == 'N')
+		set_ns_dir_and_plane(game, input);
+	else if (input == 'W')
+		set_ns_dir_and_plane(game, input);
 	else if (input == 'S')
 	{
 		game->player->dir_x = 0;
@@ -71,9 +64,9 @@ void	fill_element(t_game *game, char input, int x, int y)
 
 void	fill_map_array(t_game *game, int fd, char *line)
 {
-	char *temp;
-	int	x;
-	int	y;
+	char	*temp;
+	int		x;
+	int		y;
 
 	y = 0;
 	temp = line;

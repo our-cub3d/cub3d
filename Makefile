@@ -14,13 +14,13 @@ MLX_FLAGS			=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 RM					=	rm -f
 
 SRC_DIR 			= 	./srcs/
-PARSE_DIR			=	./srcs/parsing/
-RAY_DIR				=	./srcs/raycasting/
-MINI_DIR			=	./srcs/draw_minimap/
 
-FILES 					=	raycasting/draw_screen.c \
-							check_arguments.c \
+FILES 					=	check_arguments.c \
 	 						check_valid_map.c \
+							check_utills.c \
+							deal_key.c \
+							draw_screen_utils.c \
+							draw_screen.c \
 							get_fc.c \
 							get_map_array.c \
 							init.c \
@@ -31,12 +31,8 @@ FILES 					=	raycasting/draw_screen.c \
 							read_map_utils.c \
 							read_map.c \
 							read_wall_texture.c \
-							test_print.c \
-
-RAY_FILES				=	draw_screen.c \
 
 SRCS					=	$(addprefix $(SRC_DIR), $(FILES)) \
-							$(addprefix $(RAY_DIR), $(RAY_FILES)) \
 
 OBJS					=	$(SRCS:%.c=%.o)
 

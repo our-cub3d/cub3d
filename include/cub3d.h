@@ -7,11 +7,18 @@
 void	check_arguments(int argc, char **argv);
 void	check_extension_name(char *s);
 
+/*  check_utils.c  */
+char	*remove_newline(char *line, char *set);
+
 /*  check_valid_map.c   */
 char	*remove_newline(char *line, char *set);
 void	check_valid_map(char *line, t_parsing_info *passing_info, int fd);
 
+/*  deal_key.c  */
+int		deal_key(int key_code, t_game *game);
+
 /*  init.c  */
+void	init_map_array(t_parsing_info *parsing_info);
 void	init_mlx(t_game *game);
 void	init_all(t_game	*game);
 
@@ -51,12 +58,14 @@ int		count_in_cube_info(t_cube_info *cube_info);
 /*  read_wall_texture.c  */
 int		read_wall_texture(char *line, t_game *game);
 
-/*  test_print.c  */
-void	print_map(t_game *game);
-void	print_cube_info(t_cube_info *cube);
-
-
 /*  draw_screen.c  */
 void	draw_screen(t_game *game);
+
+/*  draw_screen_utils.c  */
+void	init_raycating(t_game *game, t_raycasting *info, int x);
+void	init_step_and_side_dist(t_game *game, t_raycasting *info);
+void	init_tex(t_tex *tex);
+void	init_screen_image(t_game *game);
+double	make_wall_x(t_game *game, t_raycasting *info, int *side, double wall_x);
 
 #endif
