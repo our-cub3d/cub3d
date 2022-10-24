@@ -4,12 +4,12 @@
 static void	screening_test(char *splited, char *temp)
 {
 	if (splited[0] == '0' || splited[ft_strlen(splited) - 1] == '0')
-		print_error_and_exit("wrong information11\n");
+		print_error_and_exit("wrong information\n");
 	if ((int)ft_strlen(splited) < (int)ft_strlen(temp))
 		if (ft_strchr(&temp[(int)ft_strlen(splited)], '0'))
-			print_error_and_exit("wrong information22\n");
+			print_error_and_exit("wrong information\n");
 	if (!is_map(splited))
-		print_error_and_exit("wrong information33\n");
+		print_error_and_exit("wrong information\n");
 }
 
 static void	check_valid_wall(char *splited, char *temp, int i)
@@ -17,16 +17,16 @@ static void	check_valid_wall(char *splited, char *temp, int i)
 	if (is_space(splited[i]))
 	{
 		if ((!is_space(temp[i]) && temp[i] != '1'))
-			print_error_and_exit("wrong information44\n");
+			print_error_and_exit("wrong information\n");
 		if (i > 0 && (!is_space(splited[i - 1]) && splited[i - 1] != '1'))
-			print_error_and_exit("wrong information55\n");
+			print_error_and_exit("wrong information\n");
 		if (i < (int)ft_strlen(splited) && \
 			(splited[i + 1] && ((!is_space(splited[i + 1])) \
 			&& splited[i + 1] != '1')))
-			print_error_and_exit("wrong information66\n");
+			print_error_and_exit("wrong information\n");
 	}
 	else if (splited[i] != '1' && is_space(temp[i]))
-		print_error_and_exit("wrong information77\n");
+		print_error_and_exit("wrong information\n");
 }
 
 static void	check_middle_line(char *splited, char *temp, \
@@ -40,7 +40,7 @@ static void	check_middle_line(char *splited, char *temp, \
 	{
 		if (i >= (int)ft_strlen(temp) && !is_space(splited[i]) && \
 			splited[i] != '1')
-			print_error_and_exit("wrong information88\n");
+			print_error_and_exit("wrong information\n");
 		check_valid_wall(splited, temp, i);
 		++i;
 	}
@@ -79,7 +79,7 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 	char	*splited;
 
 	if (!line)
-		print_error_and_exit("wrong information99\n");
+		print_error_and_exit("wrong information\n");
 	passing_info->width = is_end_line(line) - 1;
 	++(passing_info->height);
 	temp = line;

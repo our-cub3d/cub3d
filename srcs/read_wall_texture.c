@@ -6,7 +6,7 @@
 static void	update_value(char **info, char *value)
 {
 	if (*info)
-		print_error_and_exit("wrong information(rw0)\n");
+		print_error_and_exit("wrong information\n");
 	check_extension_name(value);
 	*info = value;
 }
@@ -34,7 +34,7 @@ static int	compare_and_save(char **splited, t_cube_info *cube_info)
 static void	fc_update_value(long long *info, long long value)
 {
 	if (*info != -1)
-		print_error_and_exit("wrong information(rw1)\n");
+		print_error_and_exit("wrong information\n");
 	*info = value;
 }
 
@@ -50,7 +50,7 @@ static int	fc_compare_and_save(char **splited, t_cube_info *cube_info)
 	{
 		value = ft_atoi(splited[i]);
 		if (value > 255)
-			print_error_and_exit("wrong information!(rw3)\n");
+			print_error_and_exit("wrong information\n");
 		result += value;
 		if (i != 3)
 			result = result << 8;

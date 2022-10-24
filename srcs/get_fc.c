@@ -42,6 +42,6 @@ int	get_fc(char *line)
 	else
 		return (0);
 	if (!is_valid_fc(line, i, 0, 0))
-		print_error_and_exit("wrong information!10\n");
+		print_error_and_exit("wrong information\n");
 	return (1);
 }

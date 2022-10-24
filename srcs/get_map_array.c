@@ -54,7 +54,7 @@ void	fill_element(t_game *game, char input, int x, int y)
 	else if (input == 'N' || input == 'W' || input == 'S' || input == 'E')
 	{
 		if (game->player->pos_y)
-			print_error_and_exit("too many players!\n");
+			print_error_and_exit("wrong information\n");
 		get_player_dir(game, input);
 		game->player->pos_x = x + 0.5;
 		game->player->pos_y = y + 0.5;
@@ -103,5 +103,5 @@ void	get_map_array(t_game *game, int fd)
 	}
 	fill_map_array(game, fd, line);
 	if (game->player->pos_x == 0)
-		print_error_and_exit("there's no player!\n");
+		print_error_and_exit("wrong information\n");
 }
