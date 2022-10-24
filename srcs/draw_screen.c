@@ -52,7 +52,7 @@ static void	painting_wall(t_game *game, t_raycasting *info, int *side, int x)
 
 	init_tex(&tex);
 	wall_x = 0;
-	make_wall_x(game, info, side, wall_x);
+	wall_x = make_wall_x(game, info, side, wall_x);
 	tex.x = (int)(wall_x * (double)TEX_SIZE);
 	if (*side == 0 && info->ray_dir_x < 0)
 		tex.x = TEX_SIZE - tex.x - 1;
