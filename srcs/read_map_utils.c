@@ -32,7 +32,7 @@ int	is_end_line(char *line)
 	while (line[i])
 	{
 		if (line[i] != '1' && !is_space(line[i]))
-			print_error_and_exit("wrong information");
+			print_error_and_exit("wrong information\n");
 		++i;
 	}
 	return (i);
