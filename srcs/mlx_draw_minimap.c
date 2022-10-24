@@ -2,30 +2,6 @@
 #include <stdio.h>
 #include "../mlx/mlx.h"
 
-// static void	draw_player(t_game *game, int pos_x, int pos_y)
-// {
-// 	int x;
-// 	int y;
-// 	int	img_w;
-
-// 	pos_x *= TILE_SIZE;
-// 	pos_y *= TILE_SIZE;
-// 	img_w = game->parsing_info->width * TILE_SIZE;
-// 	x = -3;
-// 	while (-4 < x && x < 4)
-// 	{
-// 		y = -3;
-// 		while ( -4 < y && y < 4)
-// 		{
-// 			game->minimap->img_data[(pos_y + y) * img_w + (pos_x + x)] = 0xFF00FF;
-// 			++y;
-// 		}
-// 		++x;
-// 	}
-// 	// if (x == (h + y))
-// 	// 		game->minimap->img_data[(h + y) * img_w + pos_x + x] = 0xFFFFFF;
-// }
-
 void	draw_player(t_game *game)
 {
 	int	player_x;
@@ -42,7 +18,6 @@ void	draw_player(t_game *game)
 	game->minimap->img_data[player_y * minimap_width + player_x + 1] = 0xFF00FF;
 }
 
-
 void	draw_rectangle(t_game *game, int w, int h)
 {
 	int x;
@@ -58,7 +33,7 @@ void	draw_rectangle(t_game *game, int w, int h)
 		x = 0;
 		while (x < TILE_SIZE)
 		{
-			game->minimap->img_data[(h  + y) * img_w + w + x] = 0xFFFFFF;
+			game->minimap->img_data[(h + y) * img_w + w + x] = 0xFFFFFF;
 			++x;
 		}
 		++y;
@@ -83,4 +58,20 @@ void	draw_rectangles(t_game *game)
 		++h;
 	}
 	draw_player(game);
+}
+
+void	draw_minimap(t_game *game)
+{
+	mlx_destroy_image(game->mlx->mlx_ptr, game->minimap->img_ptr);
+	game->minimap->img_ptr = mlx_new_image(game->mlx->mlx_ptr, \
+						TILE_SIZE * game->parsing_info->width, \
+						TILE_SIZE * game->parsing_info->height);
+	game->minimap->img_data = (int *)mlx_get_data_addr(game->minimap->img_ptr, \
+						&(game->minimap->bpp), &(game->minimap->size_l), \
+						&(game->minimap->endian));
+	draw_rectangles(game);
+	mlx_put_image_to_window(game->mlx->mlx_ptr, game->mlx->win_ptr, \
+							game->minimap->img_ptr, \
+							WIN_W - (game->parsing_info->width * TILE_SIZE), \
+							WIN_H - (game->parsing_info->height * TILE_SIZE));
 }

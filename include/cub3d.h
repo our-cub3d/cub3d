@@ -18,6 +18,7 @@ void	init_all(t_game	*game);
 /*  mlx_draw_minimap.c  */
 void	draw_rectangle(t_game *game, int x, int y);
 void	draw_rectangles(t_game *game);
+void	draw_minimap(t_game *game);
 
 /*  mlx_loop.c  */
 int		deal_key(int key_code, t_game *game);
