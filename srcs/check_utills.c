@@ -6,6 +6,11 @@ char	*remove_newline(char *line, char *set)
 	char	**splited;
 
 	splited = ft_split(line, set);
+	if (splited[0] == NULL)
+	{
+		free(splited);
+		return (ft_strdup(" "));
+	}
 	free(splited[1]);
 	free(splited);
 	return (splited[0]);

@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: surlee <surlee@student.42.seoul.kr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 23:26:06 by hogkim            #+#    #+#             */
-/*   Updated: 2022/07/11 18:34:43 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/24 14:07:54 by surlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	i;
-	char	*str;
-
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	str[i] = 0;
-	return (str);
-}
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

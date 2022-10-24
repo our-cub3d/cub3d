@@ -62,11 +62,15 @@ static void	check_all_line(char *splited, char *temp, \
 		temp = splited;
 		splited = NULL;
 		line = get_next_line(fd);
-		if (!line || line[0] == '\n')
+		if (!line)
 		{
 			is_end_line(temp);
 			free(temp);
 			break ;
+		}
+		if (line[0] == '\n')
+		{
+			is_end_line(temp);
 		}
 		splited = remove_newline(line, "\n");
 		free(line);
@@ -85,6 +89,11 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 	temp = line;
 	line = get_next_line(fd);
 	splited = remove_newline(line, "\n");
+	if (splited == NULL)
+	{
+		free(splited);
+		splited = ft_strdup(" ");
+	}
 	free(line);
 	check_all_line(splited, temp, passing_info, fd);
 }
