@@ -1,15 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/24 21:14:37 by hogkim            #+#    #+#             */
+/*   Updated: 2022/10/24 21:14:38 by hogkim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 #include <stdio.h>
-
-void print_cube_info(t_cube_info *cube)
-{
-	printf("NO : %s\n", cube->NO);
-	printf("SO : %s\n", cube->SO);
-	printf("WE : %s\n", cube->WE);
-	printf("EA : %s\n", cube->EA);
-	printf("F : %s\n", cube->F);
-	printf("C : %s\n", cube->C);
-}
+#include "../mlx/mlx.h"
 
 int	main(int ac, char **av)
 {
@@ -17,8 +20,12 @@ int	main(int ac, char **av)
 
 	check_arguments(ac, av);
 	init_all(&game);
-	read_map(av[1], &game); //유효성 검사 및 파싱
-	print_cube_info(game.cube_info);
-		// printf("%s %s :")
-	// print_map();
+	read_map(av[1], &game);
+	init_mlx(&game);
+	game.screen->img_ptr = mlx_new_image(game.mlx->mlx_ptr, WIN_W, WIN_H);
+	mlx_hook(game.mlx->win_ptr, X_EVENT_KEY_PRESS, 0, &deal_key, &game);
+	mlx_hook(game.mlx->win_ptr, X_EVENT_KEY_EXIT, 0, &ft_close, &game);
+	mlx_loop_hook(game.mlx->mlx_ptr, &main_loop, &game);
+	mlx_loop(game.mlx->mlx_ptr);
+	return (0);
 }

@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   mlx_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 21:14:44 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/24 21:14:44 by hogkim           ###   ########.fr       */
+/*   Created: 2022/10/24 21:14:42 by hogkim            #+#    #+#             */
+/*   Updated: 2022/10/24 21:14:42 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-#include <unistd.h>
 #include <stdlib.h>
+#include "../mlx/mlx.h"
 
-void	put_string_fd(char *str, int fd)
+int	ft_close(t_game *game)
 {
-	int	len;
-
-	len = 0;
-	while (str[len])
-		++len;
-	write (fd, str, len);
+	(void)game;
+	exit(0);
 }
 
-void	print_error_and_exit(char *str)
+int	main_loop(t_game *game)
 {
-	put_string_fd("Error\n", 2);
-	put_string_fd(str, 2);
-	exit(1);
+	draw_screen(game);
+	draw_minimap(game);
+	return (0);
 }
