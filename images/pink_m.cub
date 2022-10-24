@@ -1,7 +1,7 @@
-NO ./p_m_1.xpm
-WE ./p_m_2.xpm
-SO ./p_m_3.xpm
-EA ./pink_m_3.xpm
+NO ./images/p_m_1.xpm
+WE ./images/p_m_2.xpm
+SO ./images/p_m_3.xpm
+EA ./images/pink_m_3.xpm
 C 77, 55, 123
 F 14, 12, 50
 
