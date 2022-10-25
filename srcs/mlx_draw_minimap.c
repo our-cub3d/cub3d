@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_draw_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: surlee <surlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:43 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 15:30:25 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:44:31 by surlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	draw_rectangles(t_game *game)
 		w = 0;
 		while (w < game->parsing_info->width)
 		{
-			if (game->parsing_info->map[h][w] == E_WALL || game->parsing_info->map[h][w] == E_VOID)
+			if (game->parsing_info->map[h][w] == E_WALL \
+			|| game->parsing_info->map[h][w] == E_VOID)
 				draw_rectangle(game, w, h);
 			++w;
 		}
