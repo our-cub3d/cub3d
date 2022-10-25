@@ -6,13 +6,12 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:34 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 14:58:03 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:29:52 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../libft/libft.h"
-#include <stdio.h>
 
 static void	is_digit(char *line, int *i)
 {
@@ -59,7 +58,9 @@ int	get_fc(char *line)
 		++i;
 	else
 		return (0);
+	if (!is_space(line[i]))
+		print_error_and_exit("wrong information\n");
 	if (!is_valid_fc(line, i, 0, 0))
-		print_error_and_exit("wrong information11\n");
+		print_error_and_exit("wrong information\n");
 	return (1);
 }

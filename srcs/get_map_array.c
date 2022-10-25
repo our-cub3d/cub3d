@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:37 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 14:04:56 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:30:04 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	fill_element(t_game *game, char input, int x, int y)
 	else if (input == 'N' || input == 'W' || input == 'S' || input == 'E')
 	{
 		if (game->player->pos_y)
-			print_error_and_exit("wrong information12\n");
+			print_error_and_exit("wrong information\n");
 		get_player_dir(game, input);
 		game->player->pos_x = x + 0.5;
 		game->player->pos_y = y + 0.5;

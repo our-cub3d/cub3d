@@ -6,15 +6,13 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:52 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 14:05:05 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:32:33 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../libft/libft.h"
 #include <fcntl.h>
-#include <stdio.h>
-#include <math.h>
 
 int	count_in_cube_info(t_cube_info *cube_info)
 {
@@ -48,7 +46,7 @@ void	read_map(char *name_of_map, t_game *game)
 		if (read_wall_texture(line, game) == 0)
 		{
 			if (!is_map(line) || count_in_cube_info(game->cube_info) != 6)
-				print_error_and_exit("wrong information14\n");
+				print_error_and_exit("wrong information\n");
 			else
 				break ;
 		}

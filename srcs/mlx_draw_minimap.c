@@ -6,12 +6,11 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:43 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 15:08:11 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:30:25 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-#include <stdio.h>
 #include "../mlx/mlx.h"
 
 void	draw_player(t_game *game)

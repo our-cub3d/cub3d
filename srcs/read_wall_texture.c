@@ -6,14 +6,12 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:54 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 14:05:22 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:32:12 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../libft/libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 static void	update_value(char **info, char *value)
 {

@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "locale": "c",
+    "libft.h": "c",
+    "cub3d.h": "c"
+  }
+}
