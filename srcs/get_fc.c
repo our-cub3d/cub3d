@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:34 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 14:04:42 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:42:46 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ static int	is_valid_fc(char *line, int i, int num_count, int comma_count)
 	while (line[i] >= '0' && line[i] <= '9')
 		++i;
 	++num_count;
-	if (i == (int)ft_strlen(line) - 1 && comma_count == 2 && num_count == 3)
+	while (is_space(line[i]))
+		++i;
+	if (((i == (int)ft_strlen(line) - 1) || line[i] == 0) && comma_count == 2 && num_count == 3)
 		return (1);
 	return (0);
 }
