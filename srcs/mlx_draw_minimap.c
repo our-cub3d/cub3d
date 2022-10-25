@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_draw_minimap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehwkim <jaehwkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:43 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/24 14:27:00 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:08:11 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_rectangle(t_game *game, int w, int h)
 		x = 0;
 		while (x < TILE_SIZE)
 		{
-			game->minimap->img_data[(h + y) * img_w + w + x] = 0xFFFFFF;
+			game->minimap->img_data[(h + y) * img_w + w + x] = 0x66FFFFFF;
 			++x;
 		}
 		++y;
@@ -63,7 +63,7 @@ void	draw_rectangles(t_game *game)
 		w = 0;
 		while (w < game->parsing_info->width)
 		{
-			if (game->parsing_info->map[h][w] == E_WALL)
+			if (game->parsing_info->map[h][w] == E_WALL || game->parsing_info->map[h][w] == E_VOID)
 				draw_rectangle(game, w, h);
 			++w;
 		}
