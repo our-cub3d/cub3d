@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:14:21 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/24 21:14:25 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/25 11:02:56 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 	++(passing_info->height);
 	temp = line;
 	line = get_next_line(fd);
+	if (!line)
+		print_error_and_exit("wrong information\n");
 	splited = remove_newline(line, "\n");
 	if (splited == NULL)
 	{

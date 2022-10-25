@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:14:11 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/24 21:14:19 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/25 11:10:56 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char	*remove_newline(char *line, char *set)
 {
 	char	**splited;
+	char	*temp;
 
 	splited = ft_split(line, set);
 	if (splited[0] == NULL)
@@ -23,7 +24,8 @@ char	*remove_newline(char *line, char *set)
 		free(splited);
 		return (ft_strdup(" "));
 	}
+	temp = splited[0];
 	free(splited[1]);
 	free(splited);
-	return (splited[0]);
+	return (temp);
 }
