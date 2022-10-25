@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:14:21 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/25 11:02:56 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/25 13:59:07 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	check_middle_line(char *splited, char *temp, \
 		check_valid_wall(splited, temp, i);
 		++i;
 	}
-	--i;
 	if (i > passing_info->width)
 		passing_info->width = i;
 	++(passing_info->height);
@@ -96,7 +95,7 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd)
 
 	if (!line)
 		print_error_and_exit("wrong information\n");
-	passing_info->width = is_end_line(line) - 1;
+	passing_info->width = is_end_line(line);
 	++(passing_info->height);
 	temp = line;
 	line = get_next_line(fd);

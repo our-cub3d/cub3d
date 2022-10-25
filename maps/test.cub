@@ -1,0 +1,11 @@
+NO ./maps/south.xpm
+SO ./maps/north.xpm
+WE ./maps/east.xpm
+EA ./maps/west.xpm
+F 171,98,196
+C 49,175,171
+
+
+        1111
+        110N1
+        11111
