@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:14:21 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/25 13:59:07 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/10/25 14:22:43 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	check_valid_wall(char *splited, char *temp, int i)
 {
 	if (is_space(splited[i]))
 	{
-		if ((!is_space(temp[i]) && temp[i] != '1'))
+		if ((int)ft_strlen(temp) > i && (!is_space(temp[i]) && temp[i] != '1'))
 			print_error_and_exit("wrong information\n");
 		if (i > 0 && (!is_space(splited[i - 1]) && splited[i - 1] != '1'))
 			print_error_and_exit("wrong information\n");

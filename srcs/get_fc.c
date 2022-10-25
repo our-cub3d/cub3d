@@ -3,16 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_fc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:14:31 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/24 21:14:32 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/25 14:53:14 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../libft/libft.h"
 #include <stdio.h>
+
+static void is_digit(char *line, int *i)
+{
+	while (line[*i] >= '0' && line[*i] <= '9')
+		++(*i);
+}
 
 static int	is_valid_fc(char *line, int i, int num_count, int comma_count)
 {
@@ -23,8 +29,7 @@ static int	is_valid_fc(char *line, int i, int num_count, int comma_count)
 		++i;
 	while (k < 2)
 	{
-		while (line[i] >= '0' && line[i] <= '9')
-			++i;
+		is_digit(line, &i);
 		++num_count;
 		while (is_space(line[i]) || line[i] == ',')
 		{
@@ -34,9 +39,10 @@ static int	is_valid_fc(char *line, int i, int num_count, int comma_count)
 		}
 		++k;
 	}
-	while (line[i] >= '0' && line[i] <= '9')
-		++i;
+	is_digit(line, &i);
 	++num_count;
+	while (i != (int)ft_strlen(line) - 1 && is_space(line[i]))
+		++i;
 	if (i == (int)ft_strlen(line) - 1 && comma_count == 2 && num_count == 3)
 		return (1);
 	return (0);
