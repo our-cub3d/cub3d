@@ -6,7 +6,7 @@
 /*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:34 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 14:51:23 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:58:03 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-static void is_digit(char *line, int *i)
+static void	is_digit(char *line, int *i)
 {
 	while (line[*i] >= '0' && line[*i] <= '9')
 		++(*i);
