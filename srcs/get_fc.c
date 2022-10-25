@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_fc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehwkim <jaehwkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:34 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 10:53:37 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:04:42 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int	get_fc(char *line)
 	else
 		return (0);
 	if (!is_valid_fc(line, i, 0, 0))
-		print_error_and_exit("wrong information\n");
+		print_error_and_exit("wrong information11\n");
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_wall_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehwkim <jaehwkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:54 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/25 10:53:45 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:05:22 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static void	update_value(char **info, char *value)
 {
 	if (*info)
-		print_error_and_exit("wrong information\n");
+		print_error_and_exit("wrong information15\n");
 	check_extension_name(value);
 	*info = value;
 }
@@ -46,7 +46,7 @@ static int	compare_and_save(char **splited, t_cube_info *cube_info)
 static void	fc_update_value(long long *info, long long value)
 {
 	if (*info != -1)
-		print_error_and_exit("wrong information\n");
+		print_error_and_exit("wrong information16\n");
 	*info = value;
 }
 

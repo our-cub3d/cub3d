@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehwkim <jaehwkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaehwkim <jaehwkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:50 by jaehwkim          #+#    #+#             */
-/*   Updated: 2022/10/24 14:26:57 by jaehwkim         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:05:01 by jaehwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	is_end_line(char *line)
 	while (line[i])
 	{
 		if (line[i] != '1' && !is_space(line[i]))
-			print_error_and_exit("wrong information\n");
+			print_error_and_exit("wrong information13\n");
 		++i;
 	}
 	return (i);
