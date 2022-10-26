@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:15:49 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/24 21:15:50 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/26 14:34:30 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	check_valid_map(char *line, t_parsing_info *passing_info, int fd);
 
 /*  deal_key.c  */
 int		deal_key(int key_code, t_game *game);
+void	deal_key_right(int key_code, t_game *game);
+void	deal_key_left(int key_code, t_game *game);
+
 
 /*  init.c  */
 void	init_map_array(t_parsing_info *parsing_info);

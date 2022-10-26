@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:14:31 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/25 14:53:14 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/10/26 13:45:28 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-static void is_digit(char *line, int *i)
+static void	is_digit(char *line, int *i)
 {
 	while (line[*i] >= '0' && line[*i] <= '9')
 		++(*i);
@@ -59,6 +59,8 @@ int	get_fc(char *line)
 		++i;
 	else
 		return (0);
+	if (!is_space(line[i]))
+		print_error_and_exit("wrong information\n");
 	if (!is_valid_fc(line, i, 0, 0))
 		print_error_and_exit("wrong information\n");
 	return (1);

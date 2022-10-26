@@ -2,7 +2,7 @@ NAME 				=	cub3D
 LIBFT				=	./libft/libft.a
 
 CC 					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS				=	-Wall -Wextra -Werror
 MLX_FLAGS			=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 
 RM					=	rm -f
@@ -13,6 +13,7 @@ FILES 					=	check_arguments.c \
 	 						check_valid_map.c \
 							check_utills.c \
 							deal_key.c \
+							deal_key2.c \
 							draw_screen_utils.c \
 							draw_screen.c \
 							get_fc.c \

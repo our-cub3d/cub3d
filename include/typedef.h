@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:19:53 by hogkim            #+#    #+#             */
-/*   Updated: 2022/10/24 21:33:59 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/10/26 14:14:49 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-# define WIN_W	800
-# define WIN_H	400
+# define WIN_W	1280
+# define WIN_H	720
 
 # define TILE_SIZE	7
 # define TEX_SIZE	64
@@ -27,6 +27,8 @@
 # define KEY_A		0
 # define KEY_S		1
 # define KEY_D		2
+# define KEY_LEFT	123
+# define KEY_RIGHT	124
 # define KEY_ESC	53
 
 # define X_EVENT_KEY_PRESS	2
